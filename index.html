@@ -457,7 +457,644 @@
                 Sam-Dim: 8h00 - 20h00</p>
                 <a href="detail.html">det</a>
             </div>
+        </div><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café des Délices</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header et Navigation */
+        header {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23654321" width="1200" height="800"/><circle fill="%238B4513" cx="300" cy="200" r="100" opacity="0.3"/><circle fill="%23A0522D" cx="900" cy="400" r="150" opacity="0.2"/><rect fill="%23D2691E" x="100" y="600" width="200" height="100" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #8B4513;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+        }
+
+        /* About Section */
+        .about {
+            background: #f9f9f9;
+            margin: 0 -2rem;
+            padding: 5rem 2rem;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border-color: #FFD700;
+        }
+
+        .menu-item h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .menu-item .price {
+            color: #FFA500;
+            font-weight: bold;
+            font-size: 1.2rem;
+            float: right;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            margin: 0 -2rem;
+            color: white;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .contact-form button {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-info h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Style pour le lien vers detail.html */
+        .detail-link {
+            display: inline-block;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .detail-link:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+            color: #222;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* Menu mobile toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #8B4513;
+                flex-direction: column;
+                padding: 2rem 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">☕ Café des Délices</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue au Café des Délices</h1>
+            <p>Découvrez l'art du café dans une atmosphère chaleureuse et authentique</p>
+            <a href="#menu" class="cta-button">Découvrir notre Menu</a>
         </div>
+    </section>
+
+    <section id="apropos" class="about">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h2>Notre Histoire</h2>
+                <p>Depuis plus de 20 ans, le Café des Délices est le rendez-vous incontournable des amateurs de bon café. Nous sélectionnons avec soin nos grains provenant des meilleures plantations du monde pour vous offrir des saveurs exceptionnelles.</p>
+                <p>Notre équipe passionnée vous accueille dans un cadre chaleureux où se mélangent tradition et modernité. Que ce soit pour un petit-déjeuner gourmand, une pause café entre amis ou un moment de détente, nous vous promettons une expérience unique.</p>
+            </div>
+            <div class="about-image fade-in">
+                <div>🏪 Notre Café Authentique</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2>Notre Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item fade-in">
+                <h3>☕ Expressos </h3>
+                <p>Expresso classique, intense et aromatique</p>
+                <span class="price">2,50€</span>
+            </div>
+            <div class="menu-item fade-in">
+                <h3>🥛 Cappuccino</h3>
+                <p>Expresso onctueux avec mousse de lait crémeuse</p>
+                <span class="price">3,50€</span>
+            </div>
+            <div class="menu-item fade-in">
+                <h3>🍰 Latte Macchiato</h3>
+                <p>Café doux avec lait chaud et mousse délicate</p>
+                <span class="price">4,00€</span>
+            </div>
+            <div class="menu-item fade-in">
+                <h3>🥐 Petit-Déjeuner</h3>
+                <p>Croissant, confiture maison et café au choix</p>
+                <span class="price">6,50€</span>
+            </div>
+            <div class="menu-item fade-in">
+                <h3>🧁 Pâtisseries</h3>
+                <p>Sélection de pâtisseries fraîches du jour</p>
+                <span class="price">3,00€</span>
+            </div>
+            <div class="menu-item fade-in">
+                <h3>🥪 Sandwichs</h3>
+                <p>Sandwichs gourmets avec ingrédients frais</p>
+                <span class="price">7,50€</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-content">
+            <div class="contact-form fade-in">
+                <h2>Contactez-nous</h2>
+                <form id="contactForm">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <input type="tel" placeholder="Votre téléphone">
+                    <textarea placeholder="Votre message" rows="5" required></textarea>
+                    <button type="submit">Envoyer le message</button>
+                </form>
+            </div>
+            <div class="contact-info fade-in">
+                <h3>Informations</h3>
+                <p>📍 <strong>Adresse:</strong><br>
+                123 Rue du Café<br>
+                75001 Paris, France</p>
+                
+                <p>📞 <strong>Téléphone:</strong><br>
+                +33 1 23 45 67 89</p>
+                
+                <p>✉️ <strong>Email:</strong><br>
+                contact@cafedelices.fr</p>
+                
+                <p>🕒 <strong>Horaires:</strong><br>
+                Lun-Ven: 7h00 - 19h00<br>
+                Sam-Dim: 8h00 - 20h00</p>
+                
+                <!-- Lien corrigé vers detail.html avec un style attrayant -->
+                <a href="detail.html" class="detail-link">📄 Voir plus de détails</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Café des Délices. Tous droits réservés. Fait avec ❤️ pour les amateurs de café.</p>
+    </footer>
+
+    <script>
+        // Animation au scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Navigation fluide
+        function smoothScroll() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Menu mobile
+        function setupMobileMenu() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Fermer le menu quand on clique sur un lien
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Formulaire de contact
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Animation de soumission
+                const button = form.querySelector('button');
+                const originalText = button.textContent;
+                
+                button.textContent = 'Envoi en cours...';
+                button.disabled = true;
+                
+                // Simulation d'envoi
+                setTimeout(() => {
+                    alert('Merci pour votre message ! Nous vous répondrons rapidement.');
+                    form.reset();
+                    button.textContent = originalText;
+                    button.disabled = false;
+                }, 1500);
+            });
+        }
+
+        // Effet parallaxe léger sur le hero
+        function setupParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                const rate = scrolled * -0.5;
+                
+                hero.style.transform = `translateY(${rate}px)`;
+            });
+        }
+
+        // Changement de couleur du header au scroll
+        function setupHeaderScroll() {
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(139, 69, 19, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = 'linear-gradient(135deg, #8B4513, #A0522D)';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            smoothScroll();
+            setupMobileMenu();
+            setupContactForm();
+            setupParallax();
+            setupHeaderScroll();
+            
+            // Animation continue au scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Effet de typing sur le titre principal
+            const heroTitle = document.querySelector('.hero-content h1');
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < text.length) {
+                    heroTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Petites animations interactives
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
     </section>
 
     <footer>
